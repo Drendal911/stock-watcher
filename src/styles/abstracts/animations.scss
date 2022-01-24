@@ -1,0 +1,59 @@
+@keyframes moveInLeft {
+  0% {
+    opacity: 0;
+    transform: translate(-125px);
+  }
+  5% {opacity: .01;}
+  10% {opacity: .05;}
+  20% {opacity: .1;}
+  30% {opacity: .2;}
+  40% {opacity: .3;}
+  50% {opacity: .4;}
+  60% {opacity: .5;}
+  70% {opacity: .6;}
+  80% {opacity: .7;}
+  90% {opacity: .8;}
+  95% {opacity: .9;}
+  100% {
+    opacity: 1;
+    transform: translate(0);
+  }
+}
+
+@keyframes moveInRight {
+  0% {
+    opacity: 0;
+    transform: translate(125px);
+  }
+  5% {opacity: .01;}
+  10% {opacity: .05;}
+  20% {opacity: .1;}
+  30% {opacity: .2;}
+  40% {opacity: .3;}
+  50% {opacity: .4;}
+  60% {opacity: .5;}
+  70% {opacity: .6;}
+  80% {opacity: .7;}
+  90% {opacity: .8;}
+  95% {opacity: .9;}
+  100% {
+    opacity: 1;
+    transform: translate(0);
+  }
+}
+
+@keyframes fadeIn {
+  0% { opacity: 0; }
+  5% {opacity: .01;}
+  10% {opacity: .05;}
+  20% {opacity: .1;}
+  30% {opacity: .2;}
+  40% {opacity: .3;}
+  50% {opacity: .4;}
+  60% {opacity: .5;}
+  70% {opacity: .6;}
+  80% {opacity: .7;}
+  90% {opacity: .8;}
+  95% {opacity: .9;}
+  100% { opacity: 1; }
+}

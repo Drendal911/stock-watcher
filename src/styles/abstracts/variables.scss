@@ -1,0 +1,31 @@
+$primary-color: #282828;
+$secondary-color: #F2F2F2;
+$bdr-radius: .25rem;
+
+@mixin shadow {
+  box-shadow: .5rem .5rem 1rem;
+}
+
+@mixin no-hover-no-active {
+  &:hover {
+    transform: none;
+    box-shadow: none;
+  }
+  &:active {
+    transform: none;
+    box-shadow: none;
+  }
+}
+
+%btn-hover-active {
+  transition: all .1s;
+  &:hover {
+    transform: translate(-.1rem, -.1rem);
+    box-shadow: .5rem .5rem 1.5rem rgb(49, 47, 47);
+  }
+  &:active {
+    transform: translateY(0);
+    box-shadow: none;
+  }
+}
+

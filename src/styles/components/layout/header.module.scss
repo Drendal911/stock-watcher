@@ -1,0 +1,73 @@
+@import "src/styles/abstracts/variables";
+
+
+.container {
+  display: grid;
+  gap: .1rem;
+  height: 7rem;
+  justify-self: center;
+  grid-template-columns: 1fr 1fr 1fr 1fr 1fr;
+  margin: auto;
+}
+
+.header_card {
+  align-self: center;
+  justify-self: center;
+  grid-template-rows: 1fr 1fr 1fr;
+  font-size: .95rem;
+  max-width: 15rem;
+  border: solid .05rem darken($secondary-color, 10%);
+  border-radius: $bdr-radius;
+  background-color: $secondary-color;
+  padding: .5rem 2rem;
+}
+
+.header_card_special {
+  align-self: center;
+  font-size: 1rem;
+  justify-self: center;
+
+}
+
+@media screen and (max-width: 953px) {
+  .container {
+    grid-template-columns: 1fr 1fr 1fr 1fr;
+  }
+}
+
+@media screen and (max-width: 750px) {
+  .container {
+    width: 95%;
+  }
+
+}
+
+@media screen and (max-width: 630px) and (min-width: 361px) {
+  .header_card {
+    font-size: .6rem;
+  }
+}
+
+@media screen and (max-width: 360px) {
+  .container {
+    gap: 0;
+  }
+
+  .header_card {
+    padding: 1rem .35rem;
+    font-size: .6rem;
+  }
+
+}
+
+@media screen and (min-width: 1800px) {
+  .container {
+    max-width: 65%;
+  }
+}
+
+@media screen and (min-width: 1025px) {
+  .container {
+    margin-bottom: 4rem;
+  }
+}

@@ -1,0 +1,76 @@
+@import "src/styles/abstracts/variables";
+
+.main_container {
+  display: grid;
+}
+
+.card_container {
+  display: grid;
+  gap: 1.5rem;
+  grid-template-columns: 1fr 1fr;
+  grid-template-rows: 1fr 1fr 1fr 1fr;
+  border: solid .05rem darken($secondary-color, 10%);
+  background-color: $secondary-color;
+  border-radius: .4rem;
+  font-size: 2rem;
+  width: 45rem;
+  justify-self: center;
+  margin-bottom: 2rem;
+}
+
+.name {
+  justify-self: left;
+  margin: 1rem;
+}
+
+.symbol {
+  justify-self: right;
+  margin: 1rem;
+
+}
+
+.price {
+  grid-column: span 2;
+  grid-row: span 3;
+  align-self: center;
+  font-size: 4.4rem;
+}
+
+.price_span {
+  font-size: 2.4rem;
+}
+
+.price_change {
+  grid-column: span 2;
+  margin: 1rem;
+}
+
+@media screen and (max-width: 750px){
+  .card_container {
+    display: grid;
+    gap: 1.5rem;
+    grid-template-columns: 1fr 1fr;
+    grid-template-rows: 1fr 1fr 1fr 1fr 1fr;
+    background-color: $secondary-color;
+    border-radius: .2rem;
+    font-size: 1rem;
+    width: 95%;
+    justify-self: center;
+    margin-bottom: 2rem;
+    max-height: 20rem;
+  }
+
+  .price {
+    font-size: 2.4rem;
+  }
+
+  .price_span {
+    font-size: 1.4rem;
+  }
+}
+
+@media screen and (max-width: 360px) {
+  .price_change {
+    font-size: 1.27rem;
+  }
+}

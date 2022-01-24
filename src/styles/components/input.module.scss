@@ -1,0 +1,21 @@
+@import "src/styles/abstracts/variables";
+
+
+.container {
+  display: grid;
+}
+
+.input {
+  justify-self: center;
+  width: 45rem;
+  border-color: $secondary-color;
+  border-radius: $bdr-radius;
+  margin-bottom: .5rem;
+  padding: 1rem;
+}
+
+@media screen and (max-width: 750px) {
+  .input {
+    width: 95%;
+  }
+}
