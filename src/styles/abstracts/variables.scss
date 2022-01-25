@@ -1,5 +1,7 @@
 $primary-color: #282828;
 $secondary-color: #F2F2F2;
+$stock-change-green: #3CB371FF;
+$stock-change-red: #FF0000FF;
 $bdr-radius: .25rem;
 
 @mixin shadow {
@@ -28,4 +30,10 @@ $bdr-radius: .25rem;
     box-shadow: none;
   }
 }
-
+%stock-change {
+  grid-column: span 2;
+  margin:  0 .5rem;
+  padding: 0 .25rem;
+  font-size: 2rem;
+  border-radius: $bdr-radius;
+}

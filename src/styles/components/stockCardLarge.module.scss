@@ -15,6 +15,7 @@
   font-size: 2rem;
   width: 45rem;
   justify-self: center;
+  justify-items: center;
   margin-bottom: 2rem;
 }
 
@@ -26,7 +27,6 @@
 .symbol {
   justify-self: right;
   margin: 1rem;
-
 }
 
 .price {
@@ -40,9 +40,18 @@
   font-size: 2.4rem;
 }
 
-.price_change {
-  grid-column: span 2;
-  margin: 1rem;
+.stock_change_container {
+  font-size: 2rem;
+}
+
+.price_change_green {
+  background-color: $stock-change-green;
+  @extend %stock-change
+}
+.price_change_red {
+  background-color: $stock-change-red;
+  @extend %stock-change
+
 }
 
 @media screen and (max-width: 750px){
@@ -67,10 +76,27 @@
   .price_span {
     font-size: 1.4rem;
   }
+
+  .stock_change_container {
+    font-size: 1.5rem;
+  }
+  .price_change_green {
+    font-size: 1.5rem;
+  }
+  .price_change_red {
+    font-size: 1.5rem;
+    padding: .25rem;
+  }
 }
 
 @media screen and (max-width: 360px) {
-  .price_change {
+  .stock_change_container {
+    font-size: 1.27rem;
+  }
+  .price_change_green {
+    font-size: 1.27rem;
+  }
+  .price_change_red {
     font-size: 1.27rem;
   }
 }
