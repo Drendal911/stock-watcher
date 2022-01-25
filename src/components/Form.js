@@ -1,40 +1,12 @@
-import {useEffect, useRef, useState} from "react";
+import { useRef, useState } from "react";
+import { useDispatch } from "react-redux";
 import Button from "./Button";
 import inputCSS from "../styles/components/input.module.scss";
 
 
 export default function Form() {
-    const [majorIndexes, setMajorIndexes] = useState({});
-    const [singleStock, setSingleStock] = useState({});
     const input = useRef();
-    let currentDateObj = new Date();
-
-    // Console logs the chosen stock anytime it changes
-    // useEffect(() => {
-    //     if (singleStock.T !== undefined) {
-    //         console.log("setState completed", singleStock);
-    //     }
-    // }, [singleStock]);
-
-
-    function showSingleStockState() {
-        console.log(singleStock);
-    }
-
-    //If it's the weekend, set the date to the last Friday (when the markets were open)
-    function adjustForWeekend(currentDateObj) {
-        if (currentDateObj.getDay() === 6 || currentDateObj.getDay() === 0) {
-            currentDateObj.setDate(currentDateObj.getDate() - (currentDateObj.getDay() + 2) % 7);
-        }
-    }
-
-    //Format date YYYY-MM-DD
-    function dateFormatter(date) {
-        const day = date.getDate();
-        const month = date.getMonth() + 1; //Month from 0 to 11
-        const year = date.getFullYear();
-        return '' + year + '-' + (month <= 9 ? '0' + month : month) + '-' + (day <= 9 ? '0' + day : day);
-    }
+    const dispatch = useDispatch();
 
     //Show single stock
     async function showSingleStock() {
@@ -46,16 +18,16 @@ export default function Form() {
                 await fetch(url)
                     .then(response => response.json())
                     .then(data => {
-                        setSingleStock(data.body[0]);
-                        console.log(data);
+                        // console.log(data.body);
+                        console.log(data.body[0]);
+                        dispatch( {type: "newStock", incomingStock: data.body[0] })
                     });
             } catch (e) {
                 console.log(e.message);
             }
         } else {
-            alert("yo ticka wrong!")
+            alert("Please enter a stock ticker.")
         }
-
     }
 
     return (
@@ -66,7 +38,6 @@ export default function Form() {
                        placeholder={"Enter Stock Ticker"} required/>
             </div>
             <Button function={showSingleStock} text={"View Stock Info"}/>
-            <Button function={showSingleStockState} text={"Show stock state"}/>
         </div>
     )
 }
