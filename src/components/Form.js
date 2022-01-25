@@ -1,4 +1,4 @@
-import { useRef, useState } from "react";
+import { useRef } from "react";
 import { useDispatch } from "react-redux";
 import Button from "./Button";
 import inputCSS from "../styles/components/input.module.scss";
@@ -8,7 +8,7 @@ export default function Form() {
     const input = useRef();
     const dispatch = useDispatch();
 
-    //Show single stock
+    //Display selected stock in a stock card
     async function showSingleStock() {
         const value = input.current.value.trim().toUpperCase();
 
@@ -30,11 +30,23 @@ export default function Form() {
         }
     }
 
+    //Trigger showSingleStock() by pressing the enter key
+    function onPressEnter(event) {
+        if (event.code === "Enter" || event.code === "NumpadEnter") {
+            showSingleStock().then();
+        }
+    }
+
+
     return (
         <div>
             <div className={inputCSS.container}>
                 <label htmlFor="stock"/>
-                <input id="stock" type="text" className={inputCSS.input} ref={input}
+                <input id="stock"
+                       type="text"
+                       className={inputCSS.input}
+                       ref={input}
+                       onKeyPress={onPressEnter}
                        placeholder={"Enter Stock Ticker"} required/>
             </div>
             <Button function={showSingleStock} text={"View Stock Info"}/>

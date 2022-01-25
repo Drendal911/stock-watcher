@@ -40,21 +40,17 @@
   font-size: 2.4rem;
 }
 
-.price_change_green {
-  grid-column: span 2;
-  margin:  0 1rem;
-  background-color: mediumseagreen;
+.stock_change_container {
   font-size: 2rem;
-  border-radius: 1rem;
-  padding: .2rem 0rem;
+}
+
+.price_change_green {
+  background-color: $stock-change-green;
+  @extend %stock-change
 }
 .price_change_red {
-  grid-column: span 2;
-  margin: 1rem;
-  background-color: red;
-  font-size: 2rem;
-  border-radius: 1rem;
-  padding: .2rem .5rem;
+  background-color: $stock-change-red;
+  @extend %stock-change
 
 }
 
@@ -81,6 +77,9 @@
     font-size: 1.4rem;
   }
 
+  .stock_change_container {
+    font-size: 1.5rem;
+  }
   .price_change_green {
     font-size: 1.5rem;
   }
@@ -91,6 +90,9 @@
 }
 
 @media screen and (max-width: 360px) {
+  .stock_change_container {
+    font-size: 1.27rem;
+  }
   .price_change_green {
     font-size: 1.27rem;
   }
