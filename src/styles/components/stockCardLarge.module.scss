@@ -10,12 +10,14 @@
 }
 
 .card_container {
+  background-position: center;
+  background-size: cover;
+  background-color: $tertiary-color;
   display: grid;
   gap: 1.5rem;
   grid-template-columns: 1fr 1fr;
   grid-template-rows: 1fr 1fr 1fr 1fr;
   border: solid .05rem darken($secondary-color, 10%);
-  background-color: $secondary-color;
   border-radius: .4rem;
   font-size: 2rem;
   width: 45rem;
@@ -73,7 +75,6 @@
     gap: 1.5rem;
     grid-template-columns: 1fr 1fr;
     grid-template-rows: 1fr 1fr 1fr 1fr 1fr;
-    background-color: $secondary-color;
     border-radius: .2rem;
     font-size: 1rem;
     width: 95%;

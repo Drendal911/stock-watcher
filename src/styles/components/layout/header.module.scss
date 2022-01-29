@@ -41,6 +41,13 @@ img {
   }
 }
 
+@media screen and (max-width: 550px){
+  img {
+    max-width: 85%;
+    max-height: 85%;
+  }
+}
+
 
 @media screen and (max-width: 374px){
   .header_card_special {
@@ -54,7 +61,9 @@ img {
   }
 
   img {
-    max-width: 90%;
-    max-height: 90%;
+    max-width: 95%;
+    max-height: 95%;
   }
+
+
 }

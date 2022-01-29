@@ -9,7 +9,7 @@ const stockInitialState = {
     dayLow: 0,
     dayHigh: 0,
     open: 0,
-    previousClose: 0
+    previousClose: 0,
 }
 
 function stockReducer(stock = stockInitialState, action) {
@@ -31,5 +31,4 @@ function stockReducer(stock = stockInitialState, action) {
 
 
 const store = createStore(stockReducer);
-
 export default store;

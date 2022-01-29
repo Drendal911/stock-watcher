@@ -16,8 +16,49 @@
 }
 
 
+.no_suggestions {
+  color: $primary-color;
+  padding: 0.5rem;
+}
+
+.suggestions {
+  justify-self: center;
+  border: 1px solid darken($secondary-color, 10%);
+  border-radius: .25rem;
+  background-color: $secondary-color;
+  border-top-width: 0;
+  list-style: none;
+  margin-top: 0;
+  max-height: 143px;
+  overflow-y: auto;
+  padding-left: 0;
+  width: calc(290px + .5rem);
+}
+
+.suggestions li {
+  padding: 0.5rem;
+}
+
+.suggestion_active,
+.suggestions li:hover {
+  background-color: $primary-color;
+  color: $secondary-color;
+  cursor: pointer;
+  font-weight: 700;
+}
+
+.suggestions li:not(:last-of-type) {
+  border-bottom: 1px solid #999;
+}
+
+
 @media screen and (max-width: 750px) {
   .input {
     width: 95%;
   }
+
+  .suggestions {
+
+  }
+
 }
