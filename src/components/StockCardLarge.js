@@ -19,7 +19,13 @@ export default function StockCardLarge() {
 
     return (
         <>
-            {stock.name === "" ? null :
+            {stock.name === "" ?
+                <div className={stockCard.main_container_hidden}>
+                    <div className={stockCard.card_container}>
+                        <div className={stockCard.initialGreeting}>Please enter a stock ticker.</div>
+                    </div>
+                </div>
+                :
                 <div className={stockCard.main_container}>
                     <div className={stockCard.card_container}>
                         <div className={stockCard.name}>{stock.name}</div>
@@ -45,6 +51,33 @@ export default function StockCardLarge() {
                     </div>
                 </div>
             }
+
+            {/*{stock.name === "" ? null :*/}
+            {/*    <div className={stockCard.main_container}>*/}
+            {/*        <div className={stockCard.card_container}>*/}
+            {/*            <div className={stockCard.name}>{stock.name}</div>*/}
+            {/*            <div className={stockCard.symbol}>{stock.symbol}</div>*/}
+            {/*            <div className={stockCard.price}>{stock.price} <span*/}
+            {/*                className={stockCard.price_span}> USD</span>*/}
+            {/*                {stockChange ?*/}
+            {/*                    <div className={stockCard.stock_change_container}>*/}
+            {/*                        <span*/}
+            {/*                            className={stockCard.price_change_green}>{stock.change} ({stock.changesPercentage})</span>*/}
+            {/*                        Today*/}
+            {/*                    </div>*/}
+            {/*                    :*/}
+            {/*                    <div className={stockCard.stock_change_container}>*/}
+            {/*                        <span*/}
+            {/*                            className={stockCard.price_change_red}>{stock.change} ({stock.changesPercentage})</span>*/}
+            {/*                        Today*/}
+            {/*                    </div>*/}
+            {/*                }*/}
+            {/*            </div>*/}
+            {/*            <div>High {stock.dayHigh}</div>*/}
+            {/*            <div>Low {stock.dayLow}</div>*/}
+            {/*        </div>*/}
+            {/*    </div>*/}
+            {/*}*/}
         </>
     )
 }

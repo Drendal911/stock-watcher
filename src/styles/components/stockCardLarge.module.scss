@@ -4,6 +4,11 @@
   display: grid;
 }
 
+.main_container_hidden {
+  display: grid;
+  visibility: hidden;
+}
+
 .card_container {
   display: grid;
   gap: 1.5rem;
@@ -17,6 +22,7 @@
   justify-self: center;
   justify-items: center;
   margin-bottom: 2rem;
+  padding-bottom: 1rem;
 }
 
 .name {
@@ -28,6 +34,14 @@
   justify-self: right;
   margin: 1rem;
 }
+
+.initialGreeting {
+  grid-column: span 2;
+  grid-row: span 4;
+  align-self: center;
+  font-size: 4.4rem;
+}
+
 
 .price {
   grid-column: span 2;
@@ -51,7 +65,6 @@
 .price_change_red {
   background-color: $stock-change-red;
   @extend %stock-change
-
 }
 
 @media screen and (max-width: 750px){
@@ -73,6 +86,11 @@
     font-size: 2.4rem;
   }
 
+  .initialGreeting {
+    font-size: 2.4rem;
+    grid-row: span 5;
+  }
+
   .price_span {
     font-size: 1.4rem;
   }
@@ -81,22 +99,23 @@
     font-size: 1.5rem;
   }
   .price_change_green {
-    font-size: 1.5rem;
+    font-size: 1.25rem;
+    padding: 0;
   }
   .price_change_red {
-    font-size: 1.5rem;
-    padding: .25rem;
+    font-size: 1.25rem;
+    padding: 0;
   }
 }
 
 @media screen and (max-width: 360px) {
   .stock_change_container {
-    font-size: 1.27rem;
+    font-size: 1.2rem;
   }
   .price_change_green {
-    font-size: 1.27rem;
+    font-size: 1.2rem;
   }
   .price_change_red {
-    font-size: 1.27rem;
+    font-size: 1.2rem;
   }
 }

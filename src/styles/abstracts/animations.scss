@@ -57,3 +57,16 @@
   95% {opacity: .9;}
   100% { opacity: 1; }
 }
+
+@keyframes marqueeScroll1900px {
+  0% { transform: translateX(42vw)}
+  100% { transform: translateX(-155vw)}
+}
+@keyframes marqueeScroll {
+  0% { transform: translateX(100vw)}
+  100% { transform: translateX(-365vw)}
+}
+@keyframes marqueeScrollSmallScreen {
+  0% { transform: translateX(130vw)}
+  100% { transform: translateX(-1900vw)}
+}
