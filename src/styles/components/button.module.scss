@@ -10,7 +10,7 @@
   border-radius: .25rem;
   font-size: 1.3rem;
   color: $secondary-color;
-  background-color: #282828;
+  background-color: $primary-color;
   cursor: pointer;
   margin: .5rem auto;
   @extend %btn-hover-active
