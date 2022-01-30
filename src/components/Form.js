@@ -1,18 +1,20 @@
 import {useEffect, useRef} from "react";
-import {useDispatch} from "react-redux";
+import {useDispatch, useSelector} from "react-redux";
 import Button from "./Button";
-import inputCSS from "../styles/components/input.module.scss";
 import SuggestionInput from "./SuggestionInput";
+import inputCSS from "../styles/components/input.module.scss";
 
 
 export default function Form() {
     const input = useRef();
     const dispatch = useDispatch();
+    const loading = useSelector(stock => stock.loadingSuggestions);
     let allstocks = [];
 
     useEffect(() => {
         getAllStocks();
     }, [allstocks])
+
 
     async function getAllStocks() {
         allstocks = await fetch(`https://zvvlvtt198.execute-api.us-east-2.amazonaws.com/v1?stock=allstocks`)
@@ -21,6 +23,8 @@ export default function Form() {
                 data.body.map(element => {
                     allstocks.push(element.symbol);
                 });
+            }).then(r => {
+                dispatch({type: "loading", loadingSuggestions: false})
             });
     }
 
@@ -37,11 +41,24 @@ export default function Form() {
                         dispatch({type: "newStock", incomingStock: data.body[0]})
                     });
             } catch (e) {
-                console.log(e.message);
+                if (e.message === "Cannot read properties of undefined (reading 'symbol')") {
+                    showModal(`Unable to locate a stock symbol matching: ${value}`)
+                } else {
+                    console.log(e.message);
+                }
             }
         } else {
-            alert("Please enter a stock ticker.")
+            showModal("Please enter a stock symbol.");
         }
+    }
+
+    function showModal(text) {
+        dispatch({
+            type: "modal", incModal: {
+                showModal: true,
+                modalText: text
+            }
+        });
     }
 
 
@@ -49,10 +66,21 @@ export default function Form() {
         <>
             <div className={inputCSS.container}>
                 <label htmlFor="stock"/>
-                {/*SuggestionInput is a functional component, so you can't pass the ref as 'ref' without getting a warning. I chose to use 'innerRef' but it could be anything ('test' for example)*/}
-                <SuggestionInput suggestions={allstocks}
-                                 innerRef={input}
-                                 showSingleStock={showSingleStock}/>
+                {loading ?
+                    <>
+                        <SuggestionInput suggestions={allstocks}
+                                         innerRef={input}
+                                         showSingleStock={showSingleStock}/>
+                        <div className={inputCSS.loading}>
+                            <p>Loading stock suggestions...</p>
+                            <iframe src="https://giphy.com/embed/cjnnH0h3cfBTORaUnp" className={inputCSS.giphy_embed}/>
+                        </div>
+                    </>
+                    :
+                    <SuggestionInput suggestions={allstocks}
+                                     innerRef={input}
+                                     showSingleStock={showSingleStock}/>
+                }
                 <Button function={showSingleStock} text={"View Stock Info"}/>
             </div>
         </>

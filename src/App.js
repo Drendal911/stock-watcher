@@ -1,9 +1,10 @@
 import './styles/App.css';
+import backgroundVideo from './numbersOnScreen.mp4'
 import StockCardLarge from "./components/StockCardLarge";
 import Form from "./components/Form";
 import Header from "./components/layout/Header";
 import Footer from "./components/layout/Footer";
-import backgroundVideo from './numbersOnScreen.mp4'
+import Modal from "./components/Modal";
 
 function App() {
 
@@ -18,6 +19,7 @@ function App() {
                 </Header>
                 <StockCardLarge/>
                 <Form/>
+                <Modal/>
                 <Footer/>
             </div>
         </>

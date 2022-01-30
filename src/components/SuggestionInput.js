@@ -25,7 +25,6 @@ export default function SuggestionInput({ suggestions, innerRef, showSingleStock
         setShowSuggestions(true);
     }
 
-
     // Highlight the next/previous item in suggestions list when arrow keys are pressed
     function keyPress(e) {
         switch (e.code) {
@@ -38,11 +37,13 @@ export default function SuggestionInput({ suggestions, innerRef, showSingleStock
             case "Enter":
                 showSingleStock();
                 innerRef.current.value = "";
-                innerRef.focus();
+                setFilteredSuggestions([]);
+                setActiveSuggestionIndex(0);
+                setShowSuggestions(false);
+                innerRef.current.focus();
                 break
             default:
                 break;
-
         }
     }
 
@@ -61,10 +62,10 @@ export default function SuggestionInput({ suggestions, innerRef, showSingleStock
                     dispatch({type: "newStock", incomingStock: data.body[0]})
                 });
             innerRef.current.value = "";
+            innerRef.current.focus();
         } catch (e) {
             console.log(e.message);
         }
-
     };
 
     // Flag active suggestions with classes so that we can use them in our application
@@ -95,7 +96,8 @@ export default function SuggestionInput({ suggestions, innerRef, showSingleStock
     return (
         <>
             <input
-                placeholder={"Enter Stock Ticker"}
+                autoFocus
+                placeholder={"Enter Stock Symbol"}
                 ref={innerRef}
                 className={input_css.input}
                 type="text"
