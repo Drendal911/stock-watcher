@@ -15,10 +15,29 @@
   padding: 1rem;
 }
 
+.loading {
+  position: relative;
+  grid-template-rows: 1fr;
+  align-content: center;
+  justify-content: center;
+
+  & p {
+    color: $primary-color;
+    text-shadow: 0 0 .01rem $primary-color;
+  }
+}
+
+.giphy_embed {
+  width: 5rem;
+  height: 5rem;
+  border: none;
+  pointer-events: none;
+}
 
 .no_suggestions {
   color: $primary-color;
   padding: 0.5rem;
+  font-size: 1.5rem;
 }
 
 .suggestions {
@@ -56,9 +75,12 @@
   .input {
     width: 95%;
   }
+}
 
-  .suggestions {
-
+@media screen and (max-width: 500px) {
+  .loading {
+    & p {
+      font-size: 1rem;
+    }
   }
-
 }
