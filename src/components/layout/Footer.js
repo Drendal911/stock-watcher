@@ -65,7 +65,6 @@ export default function Footer() {
                         <div className={footer.stock_change_container}>
                     <span
                         className={footer.price_change_green}>{value.change} ({value.percentChange})</span>
-                            Today
                         </div>
                         :
                         <div className={footer.stock_change_container}>

@@ -7,7 +7,6 @@
   left: 50%;
   transform: translateX(-50%);
   width: 100%;
-  max-width: 1900px;
 }
 
 .marquee_container {
@@ -31,9 +30,9 @@
 
   & li {
     flex-shrink: 0;
-    font-size: .8rem;
+    font-size: 2rem;
     text-align: center;
-    max-width: 15rem;
+    width: 10rem;
     border: solid .05rem darken($secondary-color, 10%);
     border-radius: $bdr-radius;
     background-color: transparent;
@@ -41,20 +40,20 @@
 }
 
 .stock_change_container {
-  font-size: .6rem;
+  font-size: 1rem;
 }
 
 .price_change_green {
   background-color: $stock-change-green;
   @extend %stock-change;
-  font-size: .7rem;
+  font-size: 1rem;
   padding: 0 .25rem;
 }
 
 .price_change_red {
   background-color: $stock-change-red;
   @extend %stock-change;
-  font-size: .7rem;
+  font-size: 1rem;
   padding: 0 .25rem;
 }
 
@@ -63,7 +62,35 @@
   .marquee_content {
     animation: marqueeScrollSmallScreen 30s linear infinite;
   }
-}@media screen and (min-width: 1900px) {
+}
+
+@media screen and (max-width: 100px) {
+  .marquee_content {
+    & li {
+      font-size: 1.5rem;
+      text-align: center;
+      width: 8rem;
+      border: solid .05rem darken($secondary-color, 10%);
+      border-radius: $bdr-radius;
+      background-color: transparent;
+    }
+  }
+
+  .price_change_green {
+    background-color: $stock-change-green;
+    @extend %stock-change;
+    font-size: .8rem;
+  }
+
+  .price_change_red {
+    background-color: $stock-change-red;
+    @extend %stock-change;
+    font-size: .8rem;
+  }
+
+}
+
+@media screen and (min-width: 1900px) {
   .marquee_content {
     animation: marqueeScroll1900px 30s linear infinite;
   }
