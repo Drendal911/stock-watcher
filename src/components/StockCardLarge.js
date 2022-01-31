@@ -45,8 +45,8 @@ export default function StockCardLarge() {
                                 </div>
                             }
                         </div>
-                        <div>High {stock.dayHigh}</div>
-                        <div>Low {stock.dayLow}</div>
+                        <div className={stockCard.high}>High {stock.dayHigh}</div>
+                        <div className={stockCard.low}>Low {stock.dayLow}</div>
                     </div>
                 </div>
             }

@@ -66,7 +66,7 @@ export default function SuggestionInput({ suggestions, innerRef, showSingleStock
         } catch (e) {
             console.log(e.message);
         }
-    };
+    }
 
     // Flag active suggestions with classes so that we can use them in our application
     function SuggestionsListComponent() {
@@ -96,7 +96,6 @@ export default function SuggestionInput({ suggestions, innerRef, showSingleStock
     return (
         <>
             <input
-                autoFocus
                 placeholder={"Enter Stock Symbol"}
                 ref={innerRef}
                 className={input_css.input}

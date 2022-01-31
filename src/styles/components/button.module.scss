@@ -4,11 +4,11 @@
 .button {
   display: grid;
   align-items: center;
-  width: 15.5rem;
-  height: 3rem;
+  width: 25rem;
+  height: 4rem;
   border: none;
-  border-radius: .25rem;
-  font-size: 1.3rem;
+  border-radius: .3rem;
+  font-size: 2rem;
   color: $secondary-color;
   background-color: $primary-color;
   cursor: pointer;
@@ -22,6 +22,7 @@
       transform: none;
       box-shadow: none;
     }
+
     &:active {
       transform: none;
       box-shadow: none;
@@ -31,14 +32,32 @@
 
 @media screen and (max-width: 750px) {
   .button {
-    width: 95%;
     &:hover {
       transform: none;
       box-shadow: none;
     }
+
     &:active {
       transform: none;
       box-shadow: none;
     }
+  }
+}
+
+@media screen and (max-width: 500px) {
+  .button {
+    width: 95%;
+  }
+}
+
+@media screen and (max-width: 200px) {
+  .button {
+    font-size: 1rem
+  }
+}
+
+@media screen and (max-width: 100px) {
+  .button {
+    font-size: .75rem
   }
 }
