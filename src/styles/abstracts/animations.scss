@@ -70,17 +70,13 @@
   100% {transform:scaleY(.005) scaleX(0);}
 }
 
-@keyframes marqueeScroll1900px {
-  0% { transform: translateX(42vw)}
-  100% { transform: translateX(-155vw)}
-}
 @keyframes marqueeScroll {
-  0% { transform: translateX(100vw)}
-  100% { transform: translateX(-365vw)}
-}
-@keyframes marqueeScrollSmallScreen {
-  0% { transform: translateX(130vw)}
-  100% { transform: translateX(-1900vw)}
+  0% { transform: translateX(105vw)}
+  100% { transform: translateX(calc(-6410px)); }
 }
 
+@keyframes marqueeScroll1900px {
+  0% { transform: translateX(1905px)}
+  100% { transform: translateX(calc(-6410px)); }
+}
 
