@@ -25,7 +25,8 @@ export default function Header() {
                 <div className={header.icon_container}>
                     <a className={header.trade_link} href={"https://us.etrade.com/"} rel={"noreferrer noopener"}
                        target={"_blank"}>
-                        <img src={etradeIcon} alt={"Etrade Icon Link"}/>
+                        <img src={etradeIcon} alt={"Etrade Icon Link"}>
+                        </img>
                     </a>
                 </div>
                 <div className={header.icon_container}>

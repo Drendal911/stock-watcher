@@ -24,10 +24,14 @@
 img {
   max-width: 50%;
   max-height: 50%;
+  pointer-events: auto;
+  cursor: pointer;
 }
 
 .trade_link {
   text-decoration: none;
+  cursor: default;
+  pointer-events: none;
 }
 
 
