@@ -22,7 +22,8 @@
   display: flex;
   list-style: none;
   height: 100%;
-  animation: marqueeScroll 30s linear infinite;
+  animation: marqueeScroll 60s linear infinite;
+  animation-delay: 1s;
 
   &:hover {
     animation-play-state: paused;
@@ -58,12 +59,6 @@
 }
 
 
-@media screen and (max-width: 500px) {
-  .marquee_content {
-    animation: marqueeScrollSmallScreen 30s linear infinite;
-  }
-}
-
 @media screen and (max-width: 100px) {
   .marquee_content {
     & li {
@@ -91,7 +86,10 @@
 }
 
 @media screen and (min-width: 1900px) {
+  .main_container {
+    max-width: 190rem;
+  }
   .marquee_content {
-    animation: marqueeScroll1900px 30s linear infinite;
+    animation: marqueeScroll1900px 60s linear infinite;
   }
 }
