@@ -13,13 +13,14 @@ export default function Form() {
 
     useEffect(() => {
         getAllStocks();
-    }, [allstocks])
+    }, [])
 
 
     async function getAllStocks() {
         allstocks = await fetch(`https://zvvlvtt198.execute-api.us-east-2.amazonaws.com/v1?stock=allstocks`)
             .then(response => response.json())
             .then(data => {
+                console.log(data.body);
                 data.body.map(element => {
                     allstocks.push(element.symbol);
                 });
