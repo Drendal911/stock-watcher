@@ -7,6 +7,14 @@
   left: 50%;
   transform: translateX(-50%);
   width: 100%;
+  z-index: -1;
+}
+
+.footer_title {
+  text-align: center;
+  font-size: 1.5rem;
+  font-weight: 700;
+  padding-bottom: .25rem;
 }
 
 .marquee_container {

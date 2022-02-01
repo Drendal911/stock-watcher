@@ -20,8 +20,9 @@ function App() {
                 <StockCardLarge/>
                 <Form/>
                 <Modal/>
-                <Footer/>
             </div>
+            <Footer/>
+
         </>
     );
 }

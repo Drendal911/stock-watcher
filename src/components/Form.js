@@ -2,7 +2,7 @@ import {useEffect, useRef} from "react";
 import {useDispatch, useSelector} from "react-redux";
 import Button from "./Button";
 import SuggestionInput from "./SuggestionInput";
-import inputCSS from "../styles/components/input.module.scss";
+import inputCSS from "../styles/components/suggestionInput.module.scss";
 
 
 export default function Form() {
@@ -43,8 +43,10 @@ export default function Form() {
             } catch (e) {
                 if (e.message === "Cannot read properties of undefined (reading 'symbol')") {
                     showModal(`Unable to locate a stock symbol matching: ${value}`)
-                } else {
-                    console.log(e.message);
+                } else if (e.message === "Failed to fetch") {
+                    showModal("No response. The server may be down. Please try again later.");
+                }else {
+                    showModal(e.message);
                 }
             }
         } else {

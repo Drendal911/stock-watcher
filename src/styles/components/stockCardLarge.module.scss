@@ -20,8 +20,9 @@
   border: solid .05rem darken($secondary-color, 10%);
   border-radius: .4rem;
   font-size: 5rem;
-  text-shadow: 0 0 .01rem black;
   width: 60rem;
+  font-weight: 500;
+  max-height: 34.5rem;
   justify-self: center;
   justify-items: center;
   margin-bottom: 2rem;
@@ -86,7 +87,7 @@
   }
 }
 
-@media screen and (max-width: 360px) {
+@media screen and (max-width: 390px) {
   .stock_change_container {
     font-size: 1.2rem;
   }
@@ -105,7 +106,7 @@
   .low,
   .price_span,
   .stock_change_container {
-    font-size: 1.5rem;
+    font-size: 1.25rem;
   }
 
   .price_change_green {
@@ -119,6 +120,21 @@
 
 }
 
+@media screen and (max-width: 200px) {
+  .name,
+  .symbol,
+  .high,
+  .low,
+  .price_span,
+  .stock_change_container,
+  .price,
+  .price_change_green,
+  .price_change_red {
+    font-size: .75rem;
+  }
+
+}
+
 @media screen and (max-width: 100px) {
   .card_container {
     grid-template-columns: 1fr;
@@ -126,13 +142,14 @@
   }
 
   .stock_change_container {
-    font-size: .75rem;
+    font-size: .65rem;
   }
-  .price_change_green {
-    font-size: .75rem;
-  }
-  .price_change_red {
-    font-size: .75rem;
+  .price_change_green,
+  .price_change_red,
+  .price_span,
+  .high,
+  .low {
+    font-size: .65rem;
   }
 
   .initialGreeting {
@@ -145,20 +162,18 @@
   .price {
     grid-column: span 1;
     align-self: center;
-    font-size: 1rem;
-  }
-
-  .price_span {
     font-size: .75rem;
   }
 
-    .name {
+  .name {
     justify-self: center;
     margin: 1rem 0 0 0;
+    font-size: .65rem;
   }
 
   .symbol {
     justify-self: center;
     margin: 0;
+    font-size: .65rem;
   }
 }

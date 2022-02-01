@@ -26,7 +26,7 @@
   height: 100%;
   overflow: auto; /* Enable scroll if needed */
   background-color: rgb(0, 0, 0); /* Fallback color */
-  background-color: rgba(0, 0, 0, 0.5); /* Black w/ opacity */
+  background-color: rgba(0, 0, 0, 0.7); /* Black w/ opacity */
   animation: unfoldIn .75s cubic-bezier(0.165, 0.840, 0.440, 1.000);
 }
 
@@ -37,14 +37,14 @@
   padding: 20px;
   border: .5px solid darken($secondary-color, 10%);
   border-radius: $bdr-radius;
-  width: 50%;
-  max-width: 60rem;
+  width: 60rem;
   font-size: 5rem;
 }
 
 .close {
+  display: grid;
+  justify-content: end;
   color: darken($secondary-color, 50%);
-  float: right;
   font-size: 28px;
   font-weight: bold;
 }
@@ -56,9 +56,15 @@
   cursor: pointer;
 }
 
+@media screen and (max-width: 750px) {
+  .modal_content {
+    width: 95%;
+  }
+}
+
+
 @media screen and (max-width: 500px) {
   .modal_content {
-    width: 90%;
     font-size: 4rem;
   }
 }
