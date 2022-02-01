@@ -1,4 +1,4 @@
-import inputCSS from '../styles/components/input.module.scss'
+import inputCSS from '../styles/components/suggestionInput.module.scss'
 
 export default function Input(props) {
     return (

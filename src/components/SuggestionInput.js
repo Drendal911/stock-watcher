@@ -1,27 +1,34 @@
-import {useState} from "react";
+import {useState, useEffect } from "react";
 import {useDispatch} from "react-redux";
-import input_css from "../styles/components/input.module.scss";
+import input_css from "../styles/components/suggestionInput.module.scss";
 
-export default function SuggestionInput({ suggestions, innerRef, showSingleStock }) {
+export default function SuggestionInput({suggestions, innerRef, showSingleStock}) {
     const [filteredSuggestions, setFilteredSuggestions] = useState([]);
-    const [activeSuggestionIndex, setActiveSuggestionIndex] = useState(0);
+    const [activeSuggestionIndex, setActiveSuggestionIndex] = useState("");
     const [showSuggestions, setShowSuggestions] = useState(false);
     const [savedInput, setSavedInput] = useState("");
     const dispatch = useDispatch();
 
 
+    useEffect(() => {
+        if (activeSuggestionIndex === "") {
+            innerRef.current.value = "";
+        } else {
+            innerRef.current.value = filteredSuggestions[activeSuggestionIndex];
+        }
+    }, [activeSuggestionIndex])
+
+
     function onChange(e) {
         const userInput = e.target.value;
-
         // Filter suggestions that don't contain the user's input
         const unLinked = suggestions.filter(
             (suggestion) =>
                 suggestion.toLowerCase().indexOf(userInput.toLowerCase()) > -1
         );
-
         setSavedInput(e.target.value);
         setFilteredSuggestions(unLinked);
-        setActiveSuggestionIndex(0);
+        setActiveSuggestionIndex("");
         setShowSuggestions(true);
     }
 
@@ -29,16 +36,28 @@ export default function SuggestionInput({ suggestions, innerRef, showSingleStock
     function keyPress(e) {
         switch (e.code) {
             case "ArrowUp":
-                setActiveSuggestionIndex(activeSuggestionIndex - 1);
+                if (activeSuggestionIndex === "" && filteredSuggestions) {
+                    setActiveSuggestionIndex(filteredSuggestions.length - 1);
+                } else {
+                    activeSuggestionIndex - 1 < 0 ?
+                        setActiveSuggestionIndex(filteredSuggestions.length - 1) :
+                        setActiveSuggestionIndex(activeSuggestionIndex - 1);
+                }
                 break;
             case "ArrowDown":
-                setActiveSuggestionIndex(activeSuggestionIndex + 1);
+                if (activeSuggestionIndex === "" && filteredSuggestions) {
+                    setActiveSuggestionIndex(0);
+                } else {
+                    activeSuggestionIndex + 1 > filteredSuggestions.length - 1 ?
+                        setActiveSuggestionIndex(0) :
+                        setActiveSuggestionIndex(activeSuggestionIndex + 1);
+                }
                 break;
             case "Enter":
                 showSingleStock();
                 innerRef.current.value = "";
                 setFilteredSuggestions([]);
-                setActiveSuggestionIndex(0);
+                setActiveSuggestionIndex("");
                 setShowSuggestions(false);
                 innerRef.current.focus();
                 break
@@ -48,12 +67,11 @@ export default function SuggestionInput({ suggestions, innerRef, showSingleStock
     }
 
     // Event emitted when user clicks a suggestion
-    async function onClick (e) {
+    async function onClick(e) {
         setFilteredSuggestions([]);
         setSavedInput(e.target.innerText);
-        setActiveSuggestionIndex(0);
+        setActiveSuggestionIndex("");
         setShowSuggestions(false);
-
         try {
             const url = `https://zvvlvtt198.execute-api.us-east-2.amazonaws.com/v1?stock=${e.target.innerText}`;
             await fetch(url)
@@ -73,21 +91,23 @@ export default function SuggestionInput({ suggestions, innerRef, showSingleStock
         return filteredSuggestions.length ? (
             <ul className={input_css.suggestions}>
                 {filteredSuggestions.map((suggestion, index) => {
-                    let classname;
-                    // Flag the active suggestion with a class
-                    if (index === activeSuggestionIndex) {
-                        classname = "inputCSS.suggestion_active";
-                    }
                     return (
-                        <li className={classname} key={suggestion} onClick={onClick}>
-                            { suggestion }
+                        <li
+                            className={
+                                index === activeSuggestionIndex && input_css.suggestion_active
+                            }
+                            key={suggestion}
+                            onClick={onClick}
+                        >
+                            {suggestion}
                         </li>
                     );
+
                 })}
             </ul>
         ) : (
             <div className={input_css.no_suggestions}>
-                <em>Sorry, there are no matching suggestions.</em>
+                <em>Sorry, no suggestions available.</em>
             </div>
         );
     }
@@ -104,7 +124,7 @@ export default function SuggestionInput({ suggestions, innerRef, showSingleStock
                 // Use onKeyDown instead of onKeyPress because onKeyPress only works with printable characters
                 onKeyDown={keyPress}
             />
-            {showSuggestions && savedInput && <SuggestionsListComponent />}
+            {showSuggestions && savedInput && <SuggestionsListComponent/>}
         </>
     );
 };

@@ -19,9 +19,8 @@ export default function Modal() {
     return (
         <>
             {showModal.showModal &&
-                <div className={modal.modal_show}>
+                <div className={modal.modal_show} onClick={closeModal}>
                     <div className={modal.modal_content}>
-                        <span className={modal.close} onClick={closeModal}>&times;</span>
                         <p>{showModal.modalText}</p>
                     </div>
                 </div>

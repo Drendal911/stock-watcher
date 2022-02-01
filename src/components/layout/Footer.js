@@ -78,6 +78,7 @@ export default function Footer() {
 
     return (
         <div className={footer.main_container}>
+            <div className={footer.footer_title}>Major Indexes</div>
             <div className={footer.marquee_container}>
                 <ul className={footer.marquee_content}>
                     {list}
