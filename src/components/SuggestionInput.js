@@ -94,7 +94,7 @@ export default function SuggestionInput({suggestions, innerRef, showSingleStock}
                     return (
                         <li
                             className={
-                                index === activeSuggestionIndex && input_css.suggestion_active
+                                index === activeSuggestionIndex ? input_css.suggestion_active : null
                             }
                             key={suggestion}
                             onClick={onClick}
