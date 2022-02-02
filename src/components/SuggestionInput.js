@@ -1,5 +1,5 @@
-import {useState, useEffect } from "react";
-import {useDispatch} from "react-redux";
+import {useEffect, useState} from "react";
+import {useSelector} from "react-redux";
 import input_css from "../styles/components/suggestionInput.module.scss";
 
 export default function SuggestionInput({suggestions, innerRef, showSingleStock}) {
@@ -7,35 +7,78 @@ export default function SuggestionInput({suggestions, innerRef, showSingleStock}
     const [activeSuggestionIndex, setActiveSuggestionIndex] = useState("");
     const [showSuggestions, setShowSuggestions] = useState(false);
     const [savedInput, setSavedInput] = useState("");
-    const dispatch = useDispatch();
+    const allStocksList = useSelector(stock => stock.allStocks);
 
+
+    // useEffect(() => {
+    //     if (activeSuggestionIndex === "") {
+    //         innerRef.current.value = "";
+    //     } else {
+    //         innerRef.current.value = filteredSuggestions[activeSuggestionIndex];
+    //     }
+    // }, [activeSuggestionIndex])
 
     useEffect(() => {
-        if (activeSuggestionIndex === "") {
-            innerRef.current.value = "";
-        } else {
-            innerRef.current.value = filteredSuggestions[activeSuggestionIndex];
-        }
+        console.log(activeSuggestionIndex)
     }, [activeSuggestionIndex])
 
 
-    function onChange(e) {
-        const userInput = e.target.value;
-        // Filter suggestions that don't contain the user's input
-        const unLinked = suggestions.filter(
-            (suggestion) =>
-                suggestion.toLowerCase().indexOf(userInput.toLowerCase()) > -1
-        );
-        setSavedInput(e.target.value);
-        setFilteredSuggestions(unLinked);
+    function getStockSymbol(value) {
+        return value.split(" | ")[1];
+    }
+
+    function resetSuggestions(e) {
+        setFilteredSuggestions([]);
         setActiveSuggestionIndex("");
-        setShowSuggestions(true);
+        setShowSuggestions(false);
+        setSavedInput(e.target.value);
+    }
+
+
+    function onChangeByCompanySymbol(e) {
+        const userInput = e.target.value;
+
+        if (userInput.length > 1) {
+            const stockFilter = allStocksList.filter((element) => {
+                return element.symbol.toUpperCase().includes(userInput.toUpperCase());
+            })
+
+            const stockMap = stockFilter.map((element) => {
+                return element.name + " | " + element.symbol;
+            });
+
+            setSavedInput(e.target.value);
+            setFilteredSuggestions(stockMap);
+            setActiveSuggestionIndex("");
+            setShowSuggestions(true);
+        }
+
+    }
+
+    function onChangeByCompanyName(e) {
+        const userInput = e.target.value;
+
+        if (userInput.length > 1) {
+            const stockFilter = allStocksList.filter((element) => {
+                return element.name.toLowerCase().includes(userInput.toLowerCase());
+            })
+
+            const stockMap = stockFilter.map((element) => {
+                return element.name + " | " + element.symbol;
+            });
+
+            setSavedInput(e.target.value);
+            setFilteredSuggestions(stockMap);
+            setActiveSuggestionIndex("");
+            setShowSuggestions(true);
+        }
     }
 
     // Highlight the next/previous item in suggestions list when arrow keys are pressed
     function keyPress(e) {
         switch (e.code) {
             case "ArrowUp":
+            case "Numpad8":
                 if (activeSuggestionIndex === "" && filteredSuggestions) {
                     setActiveSuggestionIndex(filteredSuggestions.length - 1);
                 } else {
@@ -45,6 +88,7 @@ export default function SuggestionInput({suggestions, innerRef, showSingleStock}
                 }
                 break;
             case "ArrowDown":
+            case "Numpad2":
                 if (activeSuggestionIndex === "" && filteredSuggestions) {
                     setActiveSuggestionIndex(0);
                 } else {
@@ -54,12 +98,20 @@ export default function SuggestionInput({suggestions, innerRef, showSingleStock}
                 }
                 break;
             case "Enter":
-                showSingleStock();
-                innerRef.current.value = "";
-                setFilteredSuggestions([]);
-                setActiveSuggestionIndex("");
-                setShowSuggestions(false);
-                innerRef.current.focus();
+            case "NumpadEnter":
+                if (activeSuggestionIndex !== "") {
+                    showSingleStock(getStockSymbol(filteredSuggestions[activeSuggestionIndex]));
+                    resetSuggestions(e);
+                    innerRef.current.value = "";
+                    // setSavedInput(e.target.innerText);
+                    innerRef.current.focus();
+                } else {
+                    showSingleStock(innerRef.current.value.toUpperCase());
+                    resetSuggestions(e);
+                    innerRef.current.value = "";
+                    setSavedInput(e.target.innerText);
+                    innerRef.current.focus();
+                }
                 break
             default:
                 break;
@@ -68,22 +120,11 @@ export default function SuggestionInput({suggestions, innerRef, showSingleStock}
 
     // Event emitted when user clicks a suggestion
     async function onClick(e) {
-        setFilteredSuggestions([]);
-        setSavedInput(e.target.innerText);
-        setActiveSuggestionIndex("");
-        setShowSuggestions(false);
-        try {
-            const url = `https://zvvlvtt198.execute-api.us-east-2.amazonaws.com/v1?stock=${e.target.innerText}`;
-            await fetch(url)
-                .then(response => response.json())
-                .then(data => {
-                    dispatch({type: "newStock", incomingStock: data.body[0]})
-                });
-            innerRef.current.value = "";
-            innerRef.current.focus();
-        } catch (e) {
-            console.log(e.message);
-        }
+        const value = getStockSymbol(e.target.innerText);
+        showSingleStock(value);
+        resetSuggestions(e);
+        innerRef.current.value = "";
+        innerRef.current.focus();
     }
 
     // Flag active suggestions with classes so that we can use them in our application
@@ -96,7 +137,8 @@ export default function SuggestionInput({suggestions, innerRef, showSingleStock}
                             className={
                                 index === activeSuggestionIndex ? input_css.suggestion_active : null
                             }
-                            key={suggestion}
+                            tabIndex={-1}
+                            key={index}
                             onClick={onClick}
                         >
                             {suggestion}
@@ -120,11 +162,12 @@ export default function SuggestionInput({suggestions, innerRef, showSingleStock}
                 ref={innerRef}
                 className={input_css.input}
                 type="text"
-                onChange={onChange}
+                onChange={onChangeByCompanySymbol}
                 // Use onKeyDown instead of onKeyPress because onKeyPress only works with printable characters
                 onKeyDown={keyPress}
             />
             {showSuggestions && savedInput && <SuggestionsListComponent/>}
+            {/*{showSuggestions && <SuggestionsListComponent/>}*/}
         </>
     );
 };
