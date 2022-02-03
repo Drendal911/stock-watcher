@@ -1,8 +1,8 @@
+import inputCSS from "../styles/components/suggestionInput.module.scss";
 import {useEffect, useRef} from "react";
 import {useDispatch, useSelector} from "react-redux";
 import Button from "./Button";
 import SuggestionInput from "./SuggestionInput";
-import inputCSS from "../styles/components/suggestionInput.module.scss";
 import Toggle from "./toggle";
 
 
@@ -48,13 +48,21 @@ export default function Form() {
                     showModal(`Unable to locate a stock symbol matching: ${value}`)
                 } else if (e.message === "Failed to fetch") {
                     showModal("No response. The server may be down. Please try again later.");
-                }else {
+                } else {
                     showModal(e.message);
                 }
             }
         } else {
             showModal("Please enter a stock symbol.");
         }
+    }
+
+    function viewStockInfoHandler() {
+        const value = input.current.value.toUpperCase();
+        showSingleStock(value).then(() => {
+            input.current.value = "";
+            input.current.focus();
+        });
     }
 
     function showModal(text) {
@@ -87,7 +95,7 @@ export default function Form() {
                                      showSingleStock={showSingleStock}/>
                 }
                 <Toggle/>
-                <Button function={showSingleStock} text={"View Stock Info"}/>
+                <Button function={viewStockInfoHandler} text={"View Stock Info"}/>
             </div>
         </>
     )

@@ -1,28 +1,14 @@
-import {useEffect, useState} from "react";
+import {useState} from "react";
 import {useSelector} from "react-redux";
 import input_css from "../styles/components/suggestionInput.module.scss";
 
-export default function SuggestionInput({suggestions, innerRef, showSingleStock}) {
+export default function SuggestionInput({innerRef, showSingleStock}) {
     const [filteredSuggestions, setFilteredSuggestions] = useState([]);
     const [activeSuggestionIndex, setActiveSuggestionIndex] = useState("");
     const [showSuggestions, setShowSuggestions] = useState(false);
     const [savedInput, setSavedInput] = useState("");
     const allStocksList = useSelector(stock => stock.allStocks);
     const toggleStatus = useSelector(stock => stock.companyName);
-
-
-
-    // useEffect(() => {
-    //     if (activeSuggestionIndex === "") {
-    //         innerRef.current.value = "";
-    //     } else {
-    //         innerRef.current.value = filteredSuggestions[activeSuggestionIndex];
-    //     }
-    // }, [activeSuggestionIndex])
-
-    // useEffect(() => {
-    //     console.log(allStocksList)
-    // }, [allStocksList])
 
 
     function getStockSymbol(value) {
@@ -104,7 +90,6 @@ export default function SuggestionInput({suggestions, innerRef, showSingleStock}
                     showSingleStock(getStockSymbol(filteredSuggestions[activeSuggestionIndex]));
                     resetSuggestions(e);
                     innerRef.current.value = "";
-                    // setSavedInput(e.target.innerText);
                     innerRef.current.focus();
                 } else {
                     showSingleStock(innerRef.current.value.toUpperCase());
@@ -168,7 +153,6 @@ export default function SuggestionInput({suggestions, innerRef, showSingleStock}
                 onKeyDown={keyPress}
             />
             {showSuggestions && savedInput && <SuggestionsListComponent/>}
-            {/*{showSuggestions && <SuggestionsListComponent/>}*/}
         </>
     );
 };
