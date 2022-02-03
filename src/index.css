@@ -19,3 +19,19 @@ code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
     monospace;
 }
+
+.background_image {
+  position: fixed;
+  top: 0;
+  background-image: url("/src/images/stocks_graph.jpg");
+  background-repeat: no-repeat;
+  background-size: cover;
+  -webkit-background-size: cover;
+  -moz-background-size: cover;
+  -o-background-size: cover;
+  background-position: center center;
+  width: 100%;
+  height: 100%;
+  z-index: -100;
+  opacity: .1;
+}

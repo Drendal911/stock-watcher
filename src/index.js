@@ -9,6 +9,7 @@ ReactDOM.render(
 
         <React.StrictMode>
             <Provider store={store}>
+                <div className={"background_image"}/>
                 <App />
             </Provider>
         </React.StrictMode>,

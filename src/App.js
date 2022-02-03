@@ -9,7 +9,6 @@ function App() {
 
     return (
         <>
-            <div className={"background_image"}/>
             <div className="App">
                 <Header>
                     <h1>Stock Watcher</h1>
@@ -17,8 +16,8 @@ function App() {
                 <StockCardLarge/>
                 <Form/>
                 <Modal/>
+                <Footer/>
             </div>
-            <Footer/>
         </>
     );
 }

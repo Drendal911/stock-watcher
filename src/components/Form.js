@@ -57,6 +57,14 @@ export default function Form() {
         }
     }
 
+    function viewStockInfoHandler() {
+        const value = input.current.value.toUpperCase();
+        showSingleStock(value).then(() => {
+            input.current.value = "";
+            input.current.focus();
+        });
+    }
+
     function showModal(text) {
         dispatch({
             type: "modal", incModal: {
@@ -87,7 +95,7 @@ export default function Form() {
                                      showSingleStock={showSingleStock}/>
                 }
                 <Toggle/>
-                <Button function={showSingleStock} text={"View Stock Info"}/>
+                <Button function={viewStockInfoHandler} text={"View Stock Info"}/>
             </div>
         </>
     )
