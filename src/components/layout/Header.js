@@ -42,7 +42,8 @@ export default function Header() {
                     </a>
                 </div>
                 <div className={header.icon_container}>
-                    <a className={header.trade_link} href={"https://www.fidelity.com/trading/overview"} rel={"noreferrer noopener"}
+                    <a className={header.trade_link} href={"https://www.fidelity.com/trading/overview"}
+                       rel={"noreferrer noopener"}
                        target={"_blank"}>
                         <img src={fidelityIcon} alt={"Fidelity Icon Link"}/>
                     </a>

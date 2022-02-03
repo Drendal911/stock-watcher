@@ -1,12 +1,10 @@
 .App {
   text-align: center;
   box-sizing: border-box;
-  height: 100%;
 }
 
 .background_image {
   position: absolute;
-  top: 0;
   background-image: url("/src/images/stocks_graph.jpg");
   background-repeat: no-repeat;
   background-size: cover;

@@ -4,13 +4,14 @@ import {useEffect, useState} from "react";
 
 export default function Footer() {
     const [index, setIndex] = useState([]);
-    let temp = [];
 
     useEffect(() => {
         majorIndexes().then()
     }, []);
 
     async function majorIndexes() {
+        let temp = [];
+
         try {
             const url = `https://zvvlvtt198.execute-api.us-east-2.amazonaws.com/v1?stock=index`;
             await fetch(url)
@@ -58,22 +59,22 @@ export default function Footer() {
     }
 
     const list = Object.entries(index).map(([key, value]) => (
-                <li key={key}>
-                    <div>{value.symbol}</div>
-                    <div>{value.price}</div>
-                    {value.isPositive ?
-                        <div className={footer.stock_change_container}>
+            <li key={key}>
+                <div>{value.symbol}</div>
+                <div>{value.price}</div>
+                {value.isPositive ?
+                    <div className={footer.stock_change_container}>
                     <span
                         className={footer.price_change_green}>{value.change} ({value.percentChange})</span>
-                        </div>
-                        :
-                        <div className={footer.stock_change_container}>
+                    </div>
+                    :
+                    <div className={footer.stock_change_container}>
                     <span
                         className={footer.price_change_red}>{value.change} ({value.percentChange})</span>
-                        </div>
-                    }
-                </li>
-            )
+                    </div>
+                }
+            </li>
+        )
     )
 
     return (

@@ -1,6 +1,6 @@
 import stockCard from '../styles/components/stockCardLarge.module.scss'
-import { useSelector } from "react-redux";
-import { useState, useEffect } from "react";
+import {useSelector} from "react-redux";
+import {useState, useEffect} from "react";
 
 export default function StockCardLarge() {
     //useSelector automatically subscribes the component to redux store and allows component to use the desired portion of the store only

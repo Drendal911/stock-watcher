@@ -1,8 +1,8 @@
+import inputCSS from "../styles/components/suggestionInput.module.scss";
 import {useEffect, useRef} from "react";
 import {useDispatch, useSelector} from "react-redux";
 import Button from "./Button";
 import SuggestionInput from "./SuggestionInput";
-import inputCSS from "../styles/components/suggestionInput.module.scss";
 import Toggle from "./toggle";
 
 
@@ -48,7 +48,7 @@ export default function Form() {
                     showModal(`Unable to locate a stock symbol matching: ${value}`)
                 } else if (e.message === "Failed to fetch") {
                     showModal("No response. The server may be down. Please try again later.");
-                }else {
+                } else {
                     showModal(e.message);
                 }
             }
