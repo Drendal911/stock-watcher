@@ -144,7 +144,7 @@ export default function SuggestionInput({innerRef, showSingleStock}) {
     return (
         <>
             <input
-                placeholder={"Enter Stock Symbol"}
+                placeholder={toggleStatus ? "Enter Company Name" : "Enter Stock Symbol"}
                 ref={innerRef}
                 className={input_css.input}
                 type="text"
