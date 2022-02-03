@@ -10,9 +10,10 @@ function App() {
 
     return (
         <>
-            <video autoPlay loop muted className={"video"}>
-                <source src={backgroundVideo} type={"video/mp4"}/>
-            </video>
+            <div className={"background_image"}/>
+            {/*<video autoPlay loop muted className={"video"}>*/}
+            {/*    <source src={backgroundVideo} type={"video/mp4"}/>*/}
+            {/*</video>*/}
             <div className="App">
                 <Header>
                     <h1>Stock Watcher</h1>
@@ -22,7 +23,6 @@ function App() {
                 <Modal/>
             </div>
             <Footer/>
-
         </>
     );
 }

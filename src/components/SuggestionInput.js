@@ -8,6 +8,8 @@ export default function SuggestionInput({suggestions, innerRef, showSingleStock}
     const [showSuggestions, setShowSuggestions] = useState(false);
     const [savedInput, setSavedInput] = useState("");
     const allStocksList = useSelector(stock => stock.allStocks);
+    const toggleStatus = useSelector(stock => stock.companyName);
+
 
 
     // useEffect(() => {
@@ -18,9 +20,9 @@ export default function SuggestionInput({suggestions, innerRef, showSingleStock}
     //     }
     // }, [activeSuggestionIndex])
 
-    useEffect(() => {
-        console.log(activeSuggestionIndex)
-    }, [activeSuggestionIndex])
+    // useEffect(() => {
+    //     console.log(allStocksList)
+    // }, [allStocksList])
 
 
     function getStockSymbol(value) {
@@ -32,27 +34,6 @@ export default function SuggestionInput({suggestions, innerRef, showSingleStock}
         setActiveSuggestionIndex("");
         setShowSuggestions(false);
         setSavedInput(e.target.value);
-    }
-
-
-    function onChangeByCompanySymbol(e) {
-        const userInput = e.target.value;
-
-        if (userInput.length > 1) {
-            const stockFilter = allStocksList.filter((element) => {
-                return element.symbol.toUpperCase().includes(userInput.toUpperCase());
-            })
-
-            const stockMap = stockFilter.map((element) => {
-                return element.name + " | " + element.symbol;
-            });
-
-            setSavedInput(e.target.value);
-            setFilteredSuggestions(stockMap);
-            setActiveSuggestionIndex("");
-            setShowSuggestions(true);
-        }
-
     }
 
     function onChangeByCompanyName(e) {
@@ -72,6 +53,26 @@ export default function SuggestionInput({suggestions, innerRef, showSingleStock}
             setActiveSuggestionIndex("");
             setShowSuggestions(true);
         }
+    }
+
+    function onChangeByCompanySymbol(e) {
+        const userInput = e.target.value;
+
+        if (userInput.length > 1) {
+            const stockFilter = allStocksList.filter((element) => {
+                return element.symbol.toUpperCase().includes(userInput.toUpperCase());
+            })
+
+            const stockMap = stockFilter.map((element) => {
+                return element.name + " | " + element.symbol;
+            });
+
+            setSavedInput(e.target.value);
+            setFilteredSuggestions(stockMap);
+            setActiveSuggestionIndex("");
+            setShowSuggestions(true);
+        }
+
     }
 
     // Highlight the next/previous item in suggestions list when arrow keys are pressed
@@ -162,7 +163,7 @@ export default function SuggestionInput({suggestions, innerRef, showSingleStock}
                 ref={innerRef}
                 className={input_css.input}
                 type="text"
-                onChange={onChangeByCompanySymbol}
+                onChange={toggleStatus ? onChangeByCompanyName : onChangeByCompanySymbol}
                 // Use onKeyDown instead of onKeyPress because onKeyPress only works with printable characters
                 onKeyDown={keyPress}
             />

@@ -3,6 +3,7 @@ import {useDispatch, useSelector} from "react-redux";
 import Button from "./Button";
 import SuggestionInput from "./SuggestionInput";
 import inputCSS from "../styles/components/suggestionInput.module.scss";
+import Toggle from "./toggle";
 
 
 export default function Form() {
@@ -85,6 +86,7 @@ export default function Form() {
                                      innerRef={input}
                                      showSingleStock={showSingleStock}/>
                 }
+                <Toggle/>
                 <Button function={showSingleStock} text={"View Stock Info"}/>
             </div>
         </>
