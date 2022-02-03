@@ -12,7 +12,9 @@ const stockInitialState = {
     previousClose: 0,
     showModal: false,
     modalText: "",
-    loadingSuggestions: true
+    loadingSuggestions: true,
+    companyName: true,
+    allStocks: []
 }
 
 function stockReducer(stock = stockInitialState, action) {
@@ -29,7 +31,9 @@ function stockReducer(stock = stockInitialState, action) {
             previousClose: action.incomingStock.previousClose.toFixed(2),
             showModal: stock.showModal,
             modalText: stock.modalText,
-            loadingSuggestions: stock.loadingSuggestions
+            loadingSuggestions: stock.loadingSuggestions,
+            companyName: stock.companyName,
+            allStocks: stock.allStocks
         };
     }
     if(action.type === 'modal') {
@@ -45,7 +49,9 @@ function stockReducer(stock = stockInitialState, action) {
             previousClose: stock.previousClose,
             showModal: action.incModal.showModal,
             modalText: action.incModal.modalText,
-            loadingSuggestions: stock.loadingSuggestions
+            loadingSuggestions: stock.loadingSuggestions,
+            companyName: stock.companyName,
+            allStocks: stock.allStocks
         };
     }
     if(action.type === 'loading') {
@@ -61,9 +67,48 @@ function stockReducer(stock = stockInitialState, action) {
             previousClose: stock.previousClose,
             showModal: stock.showModal,
             modalText: stock.modalText,
-            loadingSuggestions: action.loadingSuggestions
+            loadingSuggestions: action.loadingSuggestions,
+            companyName: stock.companyName,
+            allStocks: stock.allStocks
         };
     }
+    if(action.type === 'allstocks') {
+        return {
+            symbol: stock.symbol,
+            name: stock.name,
+            price: stock.price,
+            changesPercentage: stock.changesPercentage,
+            change: stock.change,
+            dayLow: stock.dayLow,
+            dayHigh: stock.dayHigh,
+            open: stock.open,
+            previousClose: stock.previousClose,
+            showModal: stock.showModal,
+            modalText: stock.modalText,
+            loadingSuggestions: stock.loadingSuggestions,
+            companyName: stock.companyName,
+            allStocks: action.allStocks
+        }
+    }
+    if(action.type === 'toggle') {
+        return {
+            symbol: stock.symbol,
+            name: stock.name,
+            price: stock.price,
+            changesPercentage: stock.changesPercentage,
+            change: stock.change,
+            dayLow: stock.dayLow,
+            dayHigh: stock.dayHigh,
+            open: stock.open,
+            previousClose: stock.previousClose,
+            showModal: stock.showModal,
+            modalText: stock.modalText,
+            loadingSuggestions: stock.loadingSuggestions,
+            companyName: action.companyName,
+            allStocks: stock.allStocks
+        }
+    }
+
     return stock;
 }
 

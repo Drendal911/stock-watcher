@@ -3,36 +3,39 @@ import {useDispatch, useSelector} from "react-redux";
 import Button from "./Button";
 import SuggestionInput from "./SuggestionInput";
 import inputCSS from "../styles/components/suggestionInput.module.scss";
+import Toggle from "./toggle";
 
 
 export default function Form() {
     const input = useRef();
     const dispatch = useDispatch();
     const loading = useSelector(stock => stock.loadingSuggestions);
-    let allstocks = [];
+    let stockNames = [];
 
     useEffect(() => {
         getAllStocks();
-    }, [allstocks])
+    }, [])
 
 
     async function getAllStocks() {
-        allstocks = await fetch(`https://zvvlvtt198.execute-api.us-east-2.amazonaws.com/v1?stock=allstocks`)
+        let temp = [];
+        await fetch(`https://zvvlvtt198.execute-api.us-east-2.amazonaws.com/v1?stock=allstocks`)
             .then(response => response.json())
             .then(data => {
                 data.body.map(element => {
-                    allstocks.push(element.symbol);
+                    stockNames.push(element.name);
+                    temp.push({...element})
                 });
             }).then(r => {
-                dispatch({type: "loading", loadingSuggestions: false})
+                dispatch({type: "loading", loadingSuggestions: false});
+                dispatch({type: "allstocks", allStocks: [...temp]});
             });
     }
 
-    //Display selected stock in a stock card
-    async function showSingleStock() {
-        const value = input.current.value.trim().toUpperCase();
 
-        if (value.length > 0 && value.length < 7) {
+    //Display selected stock in a stock card
+    async function showSingleStock(value) {
+        if (value.length > 0) {
             try {
                 const url = `https://zvvlvtt198.execute-api.us-east-2.amazonaws.com/v1?stock=${value}`;
                 await fetch(url)
@@ -70,7 +73,7 @@ export default function Form() {
                 <label htmlFor="stock"/>
                 {loading ?
                     <>
-                        <SuggestionInput suggestions={allstocks}
+                        <SuggestionInput suggestions={stockNames}
                                          innerRef={input}
                                          showSingleStock={showSingleStock}/>
                         <div className={inputCSS.loading}>
@@ -79,10 +82,11 @@ export default function Form() {
                         </div>
                     </>
                     :
-                    <SuggestionInput suggestions={allstocks}
+                    <SuggestionInput suggestions={stockNames}
                                      innerRef={input}
                                      showSingleStock={showSingleStock}/>
                 }
+                <Toggle/>
                 <Button function={showSingleStock} text={"View Stock Info"}/>
             </div>
         </>
