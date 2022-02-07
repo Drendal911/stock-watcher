@@ -130,6 +130,21 @@
   .price,
   .price_change_green,
   .price_change_red {
+    font-size: 1rem;
+  }
+
+}
+
+@media screen and (max-width: 150px) {
+  .name,
+  .symbol,
+  .high,
+  .low,
+  .price_span,
+  .stock_change_container,
+  .price,
+  .price_change_green,
+  .price_change_red {
     font-size: .75rem;
   }
 
@@ -176,4 +191,11 @@
     margin: 0;
     font-size: .65rem;
   }
+}
+
+@media screen and (max-height: 500px) {
+  .card_container {
+    margin-bottom: 0;
+  }
+
 }

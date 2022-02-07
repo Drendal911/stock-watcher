@@ -83,6 +83,12 @@
 }
 
 
+@media screen and (max-width: 1024px) {
+  .switch_toggle label {
+    -webkit-tap-highlight-color: transparent;
+  }
+}
+
 @media screen and (max-width: 500px) {
   .switch_holder {
     width: 95%;

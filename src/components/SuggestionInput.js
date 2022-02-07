@@ -1,4 +1,4 @@
-import {useState} from "react";
+import {useEffect, useState} from "react";
 import {useSelector} from "react-redux";
 import input_css from "../styles/components/suggestionInput.module.scss";
 
@@ -10,6 +10,12 @@ export default function SuggestionInput({innerRef, showSingleStock}) {
     const allStocksList = useSelector(stock => stock.allStocks);
     const toggleStatus = useSelector(stock => stock.companyName);
 
+
+    useEffect(() => {
+        if (savedInput.length < 2) {
+            setShowSuggestions(false);
+        }
+    }, [savedInput])
 
     function getStockSymbol(value) {
         return value.split(" | ")[1];
