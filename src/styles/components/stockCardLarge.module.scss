@@ -26,7 +26,7 @@
   justify-self: center;
   justify-items: center;
   margin-bottom: 2rem;
-  padding-bottom: 1rem;
+  padding: 1rem;
 }
 
 .name {
@@ -41,9 +41,10 @@
 
 .initialGreeting {
   grid-column: span 2;
-  grid-row: span 4;
+  grid-row: span 5;
   align-self: center;
-  font-size: 4.4rem;
+  font-size: 4rem;
+  padding: 1rem;
 }
 
 
@@ -85,6 +86,10 @@
     justify-self: center;
     margin-bottom: 2rem;
   }
+
+  .initialGreeting {
+    font-size: 3rem;
+  }
 }
 
 @media screen and (max-width: 390px) {
@@ -118,6 +123,9 @@
     padding: 0;
   }
 
+  .initialGreeting {
+    font-size: 2rem;
+  }
 }
 
 @media screen and (max-width: 200px) {
@@ -133,6 +141,9 @@
     font-size: 1rem;
   }
 
+  .initialGreeting {
+    font-size: 1.5rem;
+  }
 }
 
 @media screen and (max-width: 150px) {
@@ -148,6 +159,10 @@
     font-size: .75rem;
   }
 
+  .initialGreeting {
+    font-size: 1.25rem;
+    padding: 0;
+  }
 }
 
 @media screen and (max-width: 100px) {
@@ -159,6 +174,7 @@
   .stock_change_container {
     font-size: .65rem;
   }
+
   .price_change_green,
   .price_change_red,
   .price_span,
@@ -171,7 +187,7 @@
     grid-column: span 1;
     grid-row: span 1;
     align-self: center;
-    font-size: 1.5rem;
+    font-size: .75rem;
   }
 
   .price {
@@ -197,5 +213,4 @@
   .card_container {
     margin-bottom: 0;
   }
-
 }

@@ -101,3 +101,9 @@
     animation: marqueeScroll1900px 60s linear infinite;
   }
 }
+
+@media screen and (max-width: 200px) {
+  .main_container {
+    visibility: hidden;
+  }
+}

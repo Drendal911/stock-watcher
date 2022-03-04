@@ -19,9 +19,9 @@ export default function StockCardLarge() {
     return (
         <>
             {stock.name === "" ?
-                <div className={stockCard.main_container_hidden}>
+                <div className={stockCard.main_container}>
                     <div className={stockCard.card_container}>
-                        <div className={stockCard.initialGreeting}>Please enter a stock ticker.</div>
+                        <div className={stockCard.initialGreeting}>To get started, enter a company name in the input field or toggle the search type, then enter a stock symbol.</div>
                     </div>
                 </div>
                 :

@@ -13,7 +13,6 @@ export default function Form() {
     let stockNames = [];
 
     useEffect(() => {
-        showModal("To get started, enter a company name in the input field or change the search type and enter a stock symbol.");
         getAllStocks();
     }, [])
 

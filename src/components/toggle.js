@@ -19,7 +19,7 @@ export default function Toggle() {
             <div className={toggle.container}>
                 <div className={toggle.switch_holder}>
                     <div className={toggle.switch_label}>
-                        <span>Search By:</span>
+                        <span>Search Type:</span>
                     </div>
                     <div className={toggle.switch_toggle}>
                         <input ref={searchToggle} type="checkbox" id="toggle" onChange={toggleSearchSetting}/>
