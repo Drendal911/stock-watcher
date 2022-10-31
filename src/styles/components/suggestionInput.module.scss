@@ -1,0 +1,142 @@
+@import "src/styles/abstracts/variables";
+
+
+.container {
+  display: grid;
+  margin-bottom: 10vh;
+}
+
+.input {
+  justify-self: center;
+  width: 60rem;
+  border-color: $secondary-color;
+  border-radius: $bdr-radius;
+  margin: 1.5rem auto 1.5rem auto;
+  padding: 1rem;
+  font-size: 2rem;
+}
+
+.loading {
+  position: relative;
+  grid-template-rows: 1fr;
+  align-content: center;
+  justify-content: center;
+  font-size: 3rem;
+
+  & p {
+    color: $primary-color;
+    text-shadow: 0 0 .01rem $primary-color;
+  }
+}
+
+.giphy_embed {
+  width: 7rem;
+  height: 7rem;
+  border: none;
+  pointer-events: none;
+}
+
+.no_suggestions {
+  color: $primary-color;
+  padding: 0.5rem;
+  margin-bottom: 1.5rem;
+  font-size: 3.5rem;
+}
+
+.suggestions {
+  justify-self: center;
+  border: 1px solid darken($secondary-color, 10%);
+  border-radius: .25rem;
+  background-color: $secondary-color;
+  border-top-width: 0;
+  list-style: none;
+  margin-top: 0;
+  margin-bottom: 1rem;
+  max-height: 14.5rem;
+  overflow-y: auto;
+  padding-left: 0;
+  width: 60rem;
+  font-size: 2.5rem;
+  font-weight: 700;
+}
+
+.suggestions li {
+  padding: 0.5rem;
+}
+
+.suggestion_active,
+.suggestions li:hover {
+  background-color: $primary-color;
+  color: $secondary-color;
+  cursor: pointer;
+  font-weight: 700;
+}
+
+.suggestions li:not(:last-of-type) {
+  border-bottom: 1px solid #999;
+}
+
+
+@media screen and (max-width: 750px) {
+  .input,
+  .suggestions {
+    width: 95%;
+  }
+}
+
+@media screen and (max-width: 500px) {
+  .loading {
+    & p {
+      font-size: 1.5rem;
+    }
+  }
+
+  .giphy_embed {
+    width: 5rem;
+    height: 5rem;
+  }
+}
+
+@media screen and (max-width: 200px) {
+  .input,
+  .suggestions {
+    font-size: 1.5rem;
+  }
+
+  .no_suggestions {
+      font-size: 2rem;
+  }
+}
+
+@media screen and (max-width: 100px) {
+  .input {
+    font-size: .65rem;
+  }
+
+  .suggestions {
+    font-size: 1rem;
+  }
+
+  .no_suggestions {
+    font-size: 1.25rem;
+  }
+
+  .loading {
+    & p {
+      font-size: .75rem;
+    }
+  }
+
+  .giphy_embed {
+    width: 2.5rem;
+    height: 2.5rem;
+  }
+
+}
+
+
+@media screen and (max-height: 600px) {
+  .container {
+    margin-bottom: 10rem;
+  }
+}

@@ -1,0 +1,216 @@
+@import "src/styles/abstracts/variables";
+
+.main_container {
+  display: grid;
+}
+
+.main_container_hidden {
+  display: grid;
+  visibility: hidden;
+}
+
+.card_container {
+  background-position: center;
+  background-size: cover;
+  background-color: $tertiary-color;
+  display: grid;
+  gap: 1.5rem;
+  grid-template-columns: 1fr 1fr;
+  grid-template-rows: 1fr 1fr 1fr 1fr;
+  border: solid .05rem darken($secondary-color, 10%);
+  border-radius: .4rem;
+  font-size: 5rem;
+  width: 60rem;
+  font-weight: 500;
+  max-height: 34.5rem;
+  justify-self: center;
+  justify-items: center;
+  margin-bottom: 2rem;
+  padding: 1rem;
+}
+
+.name {
+  justify-self: left;
+  margin: 1rem;
+}
+
+.symbol {
+  justify-self: right;
+  margin: 1rem;
+}
+
+.initialGreeting {
+  grid-column: span 2;
+  grid-row: span 5;
+  align-self: center;
+  font-size: 4rem;
+  padding: 1rem;
+}
+
+
+.price {
+  grid-column: span 2;
+  grid-row: span 3;
+  align-self: center;
+  font-size: 4.4rem;
+}
+
+.price_span {
+  font-size: 2.4rem;
+}
+
+.stock_change_container {
+  font-size: 2rem;
+}
+
+.price_change_green {
+  font-size: 2rem;
+  background-color: $stock-change-green;
+  @extend %stock-change
+}
+
+.price_change_red {
+  font-size: 2rem;
+  background-color: $stock-change-red;
+  @extend %stock-change
+}
+
+@media screen and (max-width: 750px) {
+  .card_container {
+    display: grid;
+    gap: 1.5rem;
+    grid-template-columns: 1fr 1fr;
+    grid-template-rows: 1fr 1fr 1fr 1fr 1fr;
+    border-radius: .2rem;
+    width: 95%;
+    justify-self: center;
+    margin-bottom: 2rem;
+  }
+
+  .initialGreeting {
+    font-size: 3rem;
+  }
+}
+
+@media screen and (max-width: 390px) {
+  .stock_change_container {
+    font-size: 1.2rem;
+  }
+  .price_change_green,
+  .price_change_red {
+    font-size: 1.2rem;
+  }
+
+  .price {
+    font-size: 2.4rem;
+  }
+
+  .name,
+  .symbol,
+  .high,
+  .low,
+  .price_span,
+  .stock_change_container {
+    font-size: 1.25rem;
+  }
+
+  .price_change_green {
+    font-size: 1.25rem;
+    padding: 0;
+  }
+  .price_change_red {
+    font-size: 1.25rem;
+    padding: 0;
+  }
+
+  .initialGreeting {
+    font-size: 2rem;
+  }
+}
+
+@media screen and (max-width: 200px) {
+  .name,
+  .symbol,
+  .high,
+  .low,
+  .price_span,
+  .stock_change_container,
+  .price,
+  .price_change_green,
+  .price_change_red {
+    font-size: 1rem;
+  }
+
+  .initialGreeting {
+    font-size: 1.5rem;
+  }
+}
+
+@media screen and (max-width: 150px) {
+  .name,
+  .symbol,
+  .high,
+  .low,
+  .price_span,
+  .stock_change_container,
+  .price,
+  .price_change_green,
+  .price_change_red {
+    font-size: .75rem;
+  }
+
+  .initialGreeting {
+    font-size: 1.25rem;
+    padding: 0;
+  }
+}
+
+@media screen and (max-width: 100px) {
+  .card_container {
+    grid-template-columns: 1fr;
+    grid-template-rows: auto;
+  }
+
+  .stock_change_container {
+    font-size: .65rem;
+  }
+
+  .price_change_green,
+  .price_change_red,
+  .price_span,
+  .high,
+  .low {
+    font-size: .65rem;
+  }
+
+  .initialGreeting {
+    grid-column: span 1;
+    grid-row: span 1;
+    align-self: center;
+    font-size: .75rem;
+  }
+
+  .price {
+    grid-column: span 1;
+    align-self: center;
+    font-size: .75rem;
+  }
+
+  .name {
+    justify-self: center;
+    margin: 1rem 0 0 0;
+    font-size: .65rem;
+  }
+
+  .symbol {
+    justify-self: center;
+    margin: 0;
+    font-size: .65rem;
+  }
+}
+
+@media screen and (max-height: 500px) {
+  .card_container {
+    margin-bottom: 0;
+  }
+}

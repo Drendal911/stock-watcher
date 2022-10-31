@@ -1,0 +1,82 @@
+@keyframes moveInLeft {
+  0% {
+    opacity: 0;
+    transform: translate(-125px);
+  }
+  5% {opacity: .01;}
+  10% {opacity: .05;}
+  20% {opacity: .1;}
+  30% {opacity: .2;}
+  40% {opacity: .3;}
+  50% {opacity: .4;}
+  60% {opacity: .5;}
+  70% {opacity: .6;}
+  80% {opacity: .7;}
+  90% {opacity: .8;}
+  95% {opacity: .9;}
+  100% {
+    opacity: 1;
+    transform: translate(0);
+  }
+}
+
+@keyframes moveInRight {
+  0% {
+    opacity: 0;
+    transform: translate(125px);
+  }
+  5% {opacity: .01;}
+  10% {opacity: .05;}
+  20% {opacity: .1;}
+  30% {opacity: .2;}
+  40% {opacity: .3;}
+  50% {opacity: .4;}
+  60% {opacity: .5;}
+  70% {opacity: .6;}
+  80% {opacity: .7;}
+  90% {opacity: .8;}
+  95% {opacity: .9;}
+  100% {
+    opacity: 1;
+    transform: translate(0);
+  }
+}
+
+@keyframes fadeIn {
+  0% { opacity: 0; }
+  5% {opacity: .01;}
+  10% {opacity: .05;}
+  20% {opacity: .1;}
+  30% {opacity: .2;}
+  40% {opacity: .3;}
+  50% {opacity: .4;}
+  60% {opacity: .5;}
+  70% {opacity: .6;}
+  80% {opacity: .7;}
+  90% {opacity: .8;}
+  95% {opacity: .9;}
+  100% { opacity: 1; }
+}
+
+@keyframes unfoldIn {
+  0% {transform:scaleY(.005) scaleX(0);}
+  50% {transform:scaleY(.005) scaleX(1);}
+  100% {transform:scaleY(1) scaleX(1);}
+}
+
+@keyframes unfoldOut {
+  0% {transform:scaleY(1) scaleX(1);}
+  50% {transform:scaleY(.005) scaleX(1);}
+  100% {transform:scaleY(.005) scaleX(0);}
+}
+
+@keyframes marqueeScroll {
+  0% { transform: translateX(105vw)}
+  100% { transform: translateX(calc(-6410px)); }
+}
+
+@keyframes marqueeScroll1900px {
+  0% { transform: translateX(1905px)}
+  100% { transform: translateX(calc(-6410px)); }
+}
+

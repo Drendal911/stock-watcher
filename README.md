@@ -1,0 +1,1 @@
+A website designed to help keep an eye on stock prices. The front-end if made with React. The back-end is powered by a Node.js AWS Lambda function that sends requests for stock data to a third-party API.
