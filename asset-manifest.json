@@ -1,0 +1,18 @@
+{
+  "files": {
+    "main.css": "/stock-watcher/static/css/main.61741471.css",
+    "main.js": "/stock-watcher/static/js/main.7433bdb0.js",
+    "static/media/stocks_graph.jpg": "/stock-watcher/static/media/stocks_graph.4540f3cbf87e3d8edf20.jpg",
+    "static/media/Fidelity-Logo.png": "/stock-watcher/static/media/Fidelity-Logo.3ed46eb5f0b969f7b852.png",
+    "static/media/Robinhood-Symbol.png": "/stock-watcher/static/media/Robinhood-Symbol.1d6cb7a23330e32a4319.png",
+    "static/media/ameritrade_logo.png": "/stock-watcher/static/media/ameritrade_logo.15b620b59550a6a6733d.png",
+    "static/media/etradeIcon.png": "/stock-watcher/static/media/etradeIcon.7c62aca30e6a29b443da.png",
+    "index.html": "/stock-watcher/index.html",
+    "main.61741471.css.map": "/stock-watcher/static/css/main.61741471.css.map",
+    "main.7433bdb0.js.map": "/stock-watcher/static/js/main.7433bdb0.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.61741471.css",
+    "static/js/main.7433bdb0.js"
+  ]
+}
